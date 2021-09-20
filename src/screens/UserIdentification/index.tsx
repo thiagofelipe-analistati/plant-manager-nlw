@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import {View, Text, TextInput ,Image, StatusBar, KeyboardAvoidingView, Platform, TouchableOpacity, SafeAreaView} from 'react-native';
+import {View, Text, TextInput , KeyboardAvoidingView, Platform,  SafeAreaView, TouchableWithoutFeedback, Keyboard} from 'react-native';
 import {styles} from './styles'
-
-
-import {MaterialCommunityIcons} from '@expo/vector-icons'
-import { Button } from '../../button';
+import { Button } from '../../componets/button';
 import colors from '../../styles/colors';
 import { useNavigation } from '@react-navigation/native';
-
-
-
-
 
 export function UserIdentification({}){
 
@@ -33,8 +26,6 @@ export function UserIdentification({}){
     setIsFilled(!!value);
     setName(value);
   }
-
-
   return(
    
     <KeyboardAvoidingView
@@ -42,6 +33,7 @@ export function UserIdentification({}){
      behavior={Platform.OS ==="ios"? "padding" : "height"}
      >
        <SafeAreaView style={styles.container}>
+         <TouchableWithoutFeedback onPress={Keyboard.dismiss}> 
             <View style={styles.content}> 
                 <View style={styles.form}> 
                     <Text style={styles.emoji} >
@@ -64,6 +56,7 @@ export function UserIdentification({}){
                     </View>
                 </View>
             </View>
+            </TouchableWithoutFeedback>
         </SafeAreaView>
     </KeyboardAvoidingView>
   )

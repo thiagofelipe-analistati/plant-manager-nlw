@@ -4,8 +4,9 @@ import {styles} from './styles'
 
 
 import {MaterialCommunityIcons} from '@expo/vector-icons'
-import { Button } from '../../button';
+import { Button } from '../../componets/button';
 import colors from '../../styles/colors';
+import { useNavigation } from '@react-navigation/core';
 
 
 
@@ -14,20 +15,10 @@ export function Confirmation({}){
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
   const [name, setName] = useState<string>();
-
-  function handleInputBlur (){
-    setIsFocused(false);
-    setIsFilled(!!name)
+  const navigation = useNavigation();
+  function handleStart (){
+    navigation.navigate("PlantSelect");
   }
-  function handleInputFocus (){
-    setIsFocused(true);
-  }
-  function handleInputChange(value: string){
-    setIsFilled(!!value);
-    setName(value);
-  }
-
-
   return(
    
     <KeyboardAvoidingView
@@ -40,10 +31,10 @@ export function Confirmation({}){
               <Text style={styles.title}>
                   Prontinho
               </Text>
-              <Text style={styles.text}>  Agora vamos começar a cuidar das suas {`\n`}plantinhas com muito cuidado. </Text>
+              <Text style={styles.text}>  Agora vamos sscomeçar a cuidar das suas {`\n`}plantinhas com muito cuidado. </Text>
 
               <View style={styles.button}>
-                <Button title="Começar" />
+                <Button title="Começar" onPress={handleStart}/>
               </View>
             </View>
         </SafeAreaView>

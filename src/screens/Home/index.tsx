@@ -8,7 +8,7 @@ import { useNavigation } from '@react-navigation/core'
 export function Home (){
     const navigation = useNavigation();
     function handleStart (){
-        navigation.navigate("UserIdentification");
+        navigation.navigate('UserIdentification');
     }
     return (
         <SafeAreaView style={styles.container}>

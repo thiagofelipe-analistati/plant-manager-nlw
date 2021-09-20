@@ -11,7 +11,6 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-around',
         marginTop: 80,
     },
-
     title: {
         fontSize: 28,
         color: colors.heading,

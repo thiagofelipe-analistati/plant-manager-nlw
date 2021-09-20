@@ -1,9 +1,10 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import colors from '../styles/colors';
 import { Home } from '../screens/Home';
 import { UserIdentification } from '../screens/UserIdentification';
 import { Confirmation } from '../screens/Confirmation';
+import { PlantSelect } from '../screens/PlantSelect';
+
 
 
 
@@ -17,6 +18,10 @@ export function AuthRoutes(){
           }}
         
         >   
+
+<Screen name="PlantSelect"
+              component={PlantSelect } 
+            />
            <Screen name="Home"
               component={Home } 
             />
@@ -26,6 +31,10 @@ export function AuthRoutes(){
             <Screen name="Confirmation"
               component={Confirmation } 
             />
+        
+
+
+            
         </Navigator>
     )
 
