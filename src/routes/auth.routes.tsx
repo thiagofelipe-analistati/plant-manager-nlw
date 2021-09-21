@@ -5,9 +5,6 @@ import { UserIdentification } from '../screens/UserIdentification';
 import { Confirmation } from '../screens/Confirmation';
 import { PlantSelect } from '../screens/PlantSelect';
 
-
-
-
 const {Navigator, Screen} = createStackNavigator();
 
 export function AuthRoutes(){
@@ -15,27 +12,21 @@ export function AuthRoutes(){
         <Navigator
         screenOptions={{
             headerShown: false
-          }}
-        
+          }}    
         >   
-
-<Screen name="PlantSelect"
-              component={PlantSelect } 
-            />
-           <Screen name="Home"
-              component={Home } 
-            />
-            <Screen name="UserIdentification"
-              component={UserIdentification } 
-            />
-            <Screen name="Confirmation"
-              component={Confirmation } 
-            />
-        
-
-
-            
-        </Navigator>
+          <Screen name="Home"
+            component={Home } 
+          />
+          <Screen name="UserIdentification"
+            component={UserIdentification } 
+          />
+          <Screen name="Confirmation"
+            component={Confirmation } 
+          />
+          <Screen name="PlantSelect"
+            component={PlantSelect } 
+          />
+      </Navigator>
     )
 
 }

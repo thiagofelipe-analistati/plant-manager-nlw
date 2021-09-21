@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import {View, Text, TextInput , KeyboardAvoidingView, Platform,  SafeAreaView, TouchableWithoutFeedback, Keyboard} from 'react-native';
+import {View, Text, TextInput , KeyboardAvoidingView, Platform,  SafeAreaView, TouchableWithoutFeedback, Keyboard, Alert} from 'react-native';
 import {styles} from './styles'
 import { Button } from '../../componets/button';
 import colors from '../../styles/colors';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export function UserIdentification({}){
 
@@ -12,9 +13,15 @@ export function UserIdentification({}){
   const [name, setName] = useState<string>();
   const navigation = useNavigation();
 
-  function handleStart (){
+  async function handleStart (){
+    if(!name)
+    return Alert.alert( "Me diz como chamar você? ");
+    
+      await AsyncStorage.setItem('@plantmanager:user', name);
+    
       navigation.navigate('Confirmation');
-  }
+
+}
   function handleInputBlur (){
     setIsFocused(false);
     setIsFilled(!!name)

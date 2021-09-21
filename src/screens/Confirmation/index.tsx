@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import {View, Text, TextInput ,Image, StatusBar, KeyboardAvoidingView, Platform, TouchableOpacity, SafeAreaView} from 'react-native';
+import {
+  View, 
+  Text, 
+  KeyboardAvoidingView, 
+  Platform, 
+  SafeAreaView,
+  Alert
+} from 'react-native';
 import {styles} from './styles'
 
 
@@ -31,7 +38,7 @@ export function Confirmation({}){
               <Text style={styles.title}>
                   Prontinho
               </Text>
-              <Text style={styles.text}>  Agora vamos sscomeçar a cuidar das suas {`\n`}plantinhas com muito cuidado. </Text>
+              <Text style={styles.text}>  Agora vamos começar a cuidar das suas {`\n`}plantinhas com muito cuidado. </Text>
 
               <View style={styles.button}>
                 <Button title="Começar" onPress={handleStart}/>

@@ -31,10 +31,8 @@ export function PlantSelect({}){
   const  [filteredPlants, setFilteredPlants] = useState<PlantsProps[]>([]);
   const  [enviromentSelected, SetEnviromentSelected] = useState('all');
   const [loadign, setLoading] = useState(true);
-
   const [page, setPage] = useState(1);
   const [loadignMore, setLoadingMore] = useState(false);
-  const [loadAll, setLoadeadAll] = useState(false);
 
   async function fechPlants() {
     const {data}  = await api.get(`plants?_sort=nsame&order=asc&_page=${page}&_limit=8`);
@@ -89,7 +87,6 @@ export function PlantSelect({}){
   if(loadign)
   return <Load />
   return(
-   
     <KeyboardAvoidingView
      style={styles.container}
      behavior={Platform.OS ==="ios"? "padding" : "height"}
@@ -103,6 +100,7 @@ export function PlantSelect({}){
         <View> 
           <FlatList 
             data={enviroments}
+            keyExtractor={(item) =>String( item.key)}
             renderItem={({item})=>(
               <EnviromentButton 
                 title={item.title}
@@ -119,6 +117,7 @@ export function PlantSelect({}){
         <View style={styles.plants}> 
           <FlatList 
             data={filteredPlants}
+            keyExtractor={(item) => String(item.id)}
             renderItem={({item})=>(
               <PlantCardPrimary data={item}  />
             )}
@@ -132,7 +131,7 @@ export function PlantSelect({}){
                 ?
                 <ActivityIndicator color={colors.green} /> 
                 : 
-                <Text> </Text>
+                <Text> </Text> 
               }
           />
         </View>  
