@@ -26,11 +26,12 @@ export const styles = StyleSheet.create({
         fontFamily: fonts.text,
     }, 
     enviromentList : {
-        height: 40,
+        height: 50,
         justifyContent: 'center',
         paddingBottom: 5,
         marginLeft: 32,
         marginVertical: 32,
+        paddingRight:65,
     },
     plants :{
         flex: 1,

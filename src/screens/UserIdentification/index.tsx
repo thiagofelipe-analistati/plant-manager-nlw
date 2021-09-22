@@ -16,10 +16,12 @@ export function UserIdentification({}){
   async function handleStart (){
     if(!name)
     return Alert.alert( "Me diz como chamar você? ");
-    
+    try{
       await AsyncStorage.setItem('@plantmanager:user', name);
-    
       navigation.navigate('Confirmation');
+    }catch{
+      return Alert.alert( "Não foi possível salvar seu nome");
+    }
 
 }
   function handleInputBlur (){

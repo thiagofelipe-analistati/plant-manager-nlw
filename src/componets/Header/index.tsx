@@ -14,7 +14,7 @@ export function Header ({ urlImage} : Props ){
     useEffect(()=>{
         async function loadStorageUserName() {
             const user = await AsyncStorage.getItem('@plantmanager:user');
-            setUserName(user || 'isso');
+            setUserName(user || '');
         }
         loadStorageUserName();
     },[])

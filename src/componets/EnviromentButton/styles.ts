@@ -8,12 +8,12 @@ import fonts from "../../styles/fonts";
 export const styles = StyleSheet.create({
     container: {
         backgroundColor: colors.shape,
-        height: 40,
-        width: 76,
+        height: 50,
+        width: 95,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 12,
-        marginHorizontal: 10
+        marginHorizontal: 10,
     },
     containeractive: {
         backgroundColor: colors.green_light
