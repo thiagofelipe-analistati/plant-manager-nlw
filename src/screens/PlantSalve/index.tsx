@@ -4,16 +4,17 @@ import {styles} from './styles'
 import {SvgFromUri} from 'react-native-svg'
 import waterdrop from '../../assets/waterdrop.png';
 import { Button } from '../../componets/button';
-import { useRoute } from '@react-navigation/core';
+import { useNavigation, useRoute } from '@react-navigation/core';
 import DateTimepicker, {Event} from '@react-native-community/datetimepicker';
 import { format, isBefore } from 'date-fns';
-import { LoadPLant, PlantProps, savePLant } from '../../libs/storage';
+import { PlantProps, savePLant } from '../../libs/storage';
 
 interface Params {
     plant: PlantProps
 } 
 export function PlantSalve (){
     const route = useRoute();
+    const navigation = useNavigation();
     const {plant} = route.params as Params;
     const [selectedDateTime, setSelectedDateTime] = useState(new Date()); 
     const [showDatePicker, setShowDatePicker] = useState(Platform.OS =='ios'); 
@@ -39,6 +40,13 @@ export function PlantSalve (){
                 ...plant,
                 dateTimeNotification:selectedDateTime
             });
+            navigation.navigate('Confirmation', {
+                title: 'Tudo certo',
+                subtitle: 'Fique tranquilo que sempre vamos lembrar você de cuidar da sua plantinha com bastante amor.',
+                buttonTitle: 'Muito obrigado :D',
+                icon: 'hug',
+                nextScreen: 'MyPlants',
+              });
 
         }catch {
             Alert.alert("Não foi Possível salvar.😥")

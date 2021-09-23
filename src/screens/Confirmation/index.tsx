@@ -5,26 +5,35 @@ import {
   KeyboardAvoidingView, 
   Platform, 
   SafeAreaView,
-  Alert
 } from 'react-native';
 import {styles} from './styles'
-
-
-import {MaterialCommunityIcons} from '@expo/vector-icons'
 import { Button } from '../../componets/button';
-import colors from '../../styles/colors';
-import { useNavigation } from '@react-navigation/core';
+import { useNavigation, useRoute } from '@react-navigation/core';
 
-
+interface Params {
+  title: string;
+  subtitle: string;
+  buttonTitle: string;
+  icon: 'smile' | 'hug';
+  nextScreen: string;
+}
+const emjis = {
+  hug: '🤗',
+  smile: '😀'
+}
 
 export function Confirmation({}){
-
-  const [isFocused, setIsFocused] = useState(false);
-  const [isFilled, setIsFilled] = useState(false);
-  const [name, setName] = useState<string>();
   const navigation = useNavigation();
+  const routes = useRoute();
+  const{
+    title,
+    subtitle,
+    buttonTitle,
+    icon,
+    nextScreen
+  } = routes.params as Params;
   function handleStart (){
-    navigation.navigate("PlantSelect");
+    navigation.navigate(nextScreen);
   }
   return(
    
@@ -34,14 +43,14 @@ export function Confirmation({}){
      >
        <SafeAreaView style={styles.container}>
             <View style={styles.content}> 
-              <Text style={styles.emoji} > 😁 </Text>
+              <Text style={styles.emoji} > {emjis[icon]} </Text>
               <Text style={styles.title}>
-                  Prontinho
+                  {title}
               </Text>
-              <Text style={styles.text}>  Agora vamos começar a cuidar das suas {`\n`}plantinhas com muito cuidado. </Text>
+              <Text style={styles.text}>  {subtitle}</Text>
 
               <View style={styles.button}>
-                <Button title="Começar" onPress={handleStart}/>
+                <Button title={buttonTitle} onPress={handleStart}/>
               </View>
             </View>
         </SafeAreaView>

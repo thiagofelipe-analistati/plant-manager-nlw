@@ -5,6 +5,8 @@ import { UserIdentification } from '../screens/UserIdentification';
 import { Confirmation } from '../screens/Confirmation';
 import { PlantSelect } from '../screens/PlantSelect';
 import { PlantSalve } from '../screens/PlantSalve';
+import { MyPlants } from '../screens/MyPlants';
+import TabRoutes from './tab.routes';
 
 const {Navigator, Screen} = createStackNavigator();
 
@@ -25,10 +27,13 @@ export function AuthRoutes(){
             component={Confirmation } 
           />
           <Screen name="PlantSelect"
-            component={PlantSelect } 
+            component={TabRoutes } 
           /> 
           <Screen name="PlantSalve"
           component={PlantSalve} 
+          />
+          <Screen name="MyPlants"
+          component={TabRoutes} 
           />
       </Navigator>
     )
